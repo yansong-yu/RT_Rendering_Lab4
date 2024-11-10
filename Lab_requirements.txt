@@ -1,21 +1,37 @@
-Create a 3D multi-component object with at least three hierarchy levels.  Set up a camera for 3D rendering.
-
-To sign up for a demo (you must have at least one demo for Labs 3, 4, and 5), include a file named "demo.txt" in your submission.
-
 Tasks
-Create a 3D scene using WebGL. In addition to creating 3D objects in your scene (explained below), you will also need a camera.
-Your 3D scene needs to have at least the following geometric primitives:
-Cube (size, color): The cube size is given as a size parameter centered at (0,0,0) in the local coordinate system.
-Cylinder (base radius, top radius, height, number of slices, number of stacks, color): The Cylinder can be approximated by a sequence of circles with an adjustable radius. The height of the cylinder is controlled by another input parameter, ‘height.’ The resolution of the cylinder is controlled by the number of slices representing the number of samples in a circle and the number of stacks representing the number of circles.
-Sphere (radius, number of slices, number of stacks, color): A sphere can be discretized by longitude (geodesic vertical) and latitude (horizontal) lines. A quad is formed by four boundary lines (two longitudes and two latitude lines), which can be further decomposed into two triangle.
-In addition, to transform your component, you should also be able to allow the object to roam around the space with the following control keys:
-W: move the object forward.
-S: move the object backward.
-A:  move the object to the left
-D: move the object to the right
-Allow the user to control the camera to look up/down (pitch), left/right (yaw), and clock/counterclockwise (roll) (https://en.wikipedia.org/wiki/Aircraft_principal_axes Links to an external site.). Place your camera at a good location of your choice, and then use keystrokes P/p, Y/y, and R/r for the camera’s pitch, yaw, and roll control.
-Bonus point
-Do the following and receive up to one bonus point:
+1. (3 pts) Enhance your 3D scene: (1) retain your model from lab 3 (2) import an additional triangular model that has a higher complexity.  The model can be something created by others and downloaded online. Also, the model can be defined in any format, but using JSON is recommended. An example of how to read JSON geometry is in teapot.html of the WebGL Tutorial Links to an external site..
 
-(0.5 pt): Implement your own matrix arithmetic and transformations (projection/viewing/model matrices)
-(0.5 pt): Implement and use quaternion-based 3D rotations
+You may find diverse 3D models from this website (suggested by a previous student, Neng Shi Links to an external site.)  http://rigmodels.com/index.php Links to an external site..  Note: (1) you have to click "Show All Formats.." to find a link for the JSON model; (2) you may need to derive vertex normals on your own.
+
+Note: Your browser might prevent you from reading a local file for security reasons. There are several approaches to address this issue：
+
+Approach 1 (recommended): Using Live Server on Visual Studio Code
+The live server extension launches a local development server with live reload feature for static & dynamic pages. Here is a tutorial Links to an external site. about how to use it.
+Step 1: Click on the extensions option on the left side in Visual Studio Code.
+Step 2: Search Live Server in the search box and install it.
+Step 3: Click on Go live present at the bottom.
+Step 4: The default browser will get opened automatically once you click on the go live.
+Approach 2 (recommended): Starting a local HTTP server if you have python installed on your machine
+$ cd <project dir>
+$ python -m http.server 8080       # python 3
+$ python -m SimpleHTTPServer    # python 2
+$ <access localhost:8080 on a browser>
+As long as you used all relative paths in the project code, the browser won't complain about loading the files since you accessed it through the server, not as local files.
+Approach 3 (not recommended): Let browsers recognize files from the same folder to be of the same origin
+In MacOS X, you go to the developer dropdown menu and click on ‘Disable Cross-Origin Restrictions’
+In Firefox (contributed by Mirkamil Mierkamili):
+Type about: config on the URL bar.
+Search for privacy.file_unique_origin
+Set that option to false
+In Chrome, for MacOX, run Chrome from a terminal, do:
+open /Applications/Google\ Chrome.app --args --allow-file-access-from-files
+In Chrome, for windows, do:
+Go to Run and type the following command: chrome.exe --allow-file-access-from-file
+Note that doing this may expose your computer to some hazards. So only do it while you are testing or doing your lab and disable it once you have finished.
+2. (4 pts) Add lighting to illuminate your scene with GLSL shaders with one light source. Your VBOs should pass the vertex position, normals, and material properties (ambient, diffuse, and specular coefficients) as attributes to the shaders. Also, you must pass the lighting position, intensity/color, etc., as uniform variables to the shader. You will implement the per-fragment Phong shading algorithm involving vertex and fragment shaders.
+
+3. (3 pts) Implement a light control mechanism so that you can:
+
+Draw a sphere to show where your light is
+If you missed how to do spheres in lab3, here is a useful website suggested by Jack Loth: http://www.songho.ca/opengl/gl_sphere.html Links to an external site.
+Use keystrokes (define your own) to move the light around the scheme (i.e., modify X, Y, Z in world space)
