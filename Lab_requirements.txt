@@ -1,0 +1,21 @@
+Create a 3D multi-component object with at least three hierarchy levels.  Set up a camera for 3D rendering.
+
+To sign up for a demo (you must have at least one demo for Labs 3, 4, and 5), include a file named "demo.txt" in your submission.
+
+Tasks
+Create a 3D scene using WebGL. In addition to creating 3D objects in your scene (explained below), you will also need a camera.
+Your 3D scene needs to have at least the following geometric primitives:
+Cube (size, color): The cube size is given as a size parameter centered at (0,0,0) in the local coordinate system.
+Cylinder (base radius, top radius, height, number of slices, number of stacks, color): The Cylinder can be approximated by a sequence of circles with an adjustable radius. The height of the cylinder is controlled by another input parameter, ‘height.’ The resolution of the cylinder is controlled by the number of slices representing the number of samples in a circle and the number of stacks representing the number of circles.
+Sphere (radius, number of slices, number of stacks, color): A sphere can be discretized by longitude (geodesic vertical) and latitude (horizontal) lines. A quad is formed by four boundary lines (two longitudes and two latitude lines), which can be further decomposed into two triangle.
+In addition, to transform your component, you should also be able to allow the object to roam around the space with the following control keys:
+W: move the object forward.
+S: move the object backward.
+A:  move the object to the left
+D: move the object to the right
+Allow the user to control the camera to look up/down (pitch), left/right (yaw), and clock/counterclockwise (roll) (https://en.wikipedia.org/wiki/Aircraft_principal_axes Links to an external site.). Place your camera at a good location of your choice, and then use keystrokes P/p, Y/y, and R/r for the camera’s pitch, yaw, and roll control.
+Bonus point
+Do the following and receive up to one bonus point:
+
+(0.5 pt): Implement your own matrix arithmetic and transformations (projection/viewing/model matrices)
+(0.5 pt): Implement and use quaternion-based 3D rotations
