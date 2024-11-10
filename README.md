@@ -4,7 +4,7 @@ A Scene with a Hierarchical (6 hierarchy) Windmill and Trees (third party mesh d
 
 ## Usage
 
-Open the index.html to launch.
+Launch a server (for loading the mesh) and open the index.html to launch.
 
 1. `w`, `a`, `s`, `d` for moving the windmill `forward`, `left`, `backward`, `right`.
 
